@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+    <extension point="org.eclipse.ui.commands">
+        <command
+                id="nonbreakpoint.command.toggle"
+                name="Toggle Non-Breakpoint">
+        </command>
+    </extension>
+
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+                locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                    commandId="nonbreakpoint.command.toggle"
+                    label="Toggle Non-Breakpoint"
+                    style="push">
+            </command>
+        </menuContribution>
+    </extension>
+
+    <extension point="org.eclipse.ui.handlers">
+        <handler
+                commandId="nonbreakpoint.command.toggle"
+                class="nonbreakpoint.ToggleNonBreakpointHandler">
+        </handler>
+    </extension>
+
+    <extension point="org.eclipse.core.resources.markers"
+            id="nonbreakpoint.marker"
+            name="Non-Breakpoint">
+        <super type="org.eclipse.core.resources.textmarker"/>
+        <persistent value="true"/>
+    </extension>
+
+    <extension point="org.eclipse.ui.editors.markerAnnotationSpecification">
+        <specification
+                annotationType="nonbreakpoint.marker"
+                label="Non-Breakpoint"
+                icon="$nl$/icons/nonbreakpoint.png"
+                textPreferenceKey="nonbreakpointIndicator"
+                textPreferenceValue="true"
+                highlightPreferenceKey="nonbreakpointHighlight"
+                highlightPreferenceValue="false"
+                verticalRulerPreferenceKey="nonbreakpointVerticalRuler"
+                verticalRulerPreferenceValue="true"
+                colorPreferenceKey="nonbreakpointColor"
+                colorPreferenceValue="255,200,0"
+                overviewRulerPreferenceKey="nonbreakpointOverview"
+                overviewRulerPreferenceValue="true">
+        </specification>
+    </extension>
+
+    <extension point="org.eclipse.ui.editors.annotationTypes">
+        <type
+                name="nonbreakpoint.marker"
+                markerType="nonbreakpoint.marker"
+                markerSeverity="0">
+        </type>
+    </extension>
+
+    <extension point="org.eclipse.ui.bindings">
+        <key
+                sequence="M1+M2+N"
+                commandId="nonbreakpoint.command.toggle"
+                schemeId="org.eclipse.ui.defaultAcceleratorConfiguration">
+        </key>
+    </extension>
+
+</plugin>

@@ -1,0 +1,11 @@
+# Eclipse build output
+bin/
+plugins/
+
+# Eclipse local settings
+.settings/
+.classpath
+.project
+
+# Claude Code settings
+.claude/
